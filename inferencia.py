@@ -60,7 +60,7 @@ def tipo_de_tosse(sintoma):
 
 def intensidade2(sintoma):
     print("Qual a duração da " + sintoma + "? Digite o número correspondente a opção")
-    print("3 dias  |  3 dias - 7 dias  |     mais de 7 dias")
+    print("{1} 3 dias  |{2}   3 dias - 7 dias  |{3}    mais de 7 dias")
     while 1:
         intensidade_sintoma = input()
         if is_int(intensidade_sintoma):
@@ -226,8 +226,8 @@ def febre_duracao(tempo_febre):
 
 # Função que atualiza a probabilidade de cada doença dado o surgimento de dor corpo
 def corpo_prob():
-    covid = 1 / 3
-    resfriado = 2 / 3
+    covid = 0.5
+    resfriado = 1
     gripe = 1
     return Doencas(covid, resfriado, gripe)
 

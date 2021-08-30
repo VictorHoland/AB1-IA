@@ -62,7 +62,7 @@ def main():
             intensidade_fadiga = 0
             if apresentou('fadiga'):
                 fadiga = True
-                intensidade_fadiga = intensidade2('da fadiga')
+                intensidade_fadiga = intensidade2('fadiga')
 
             # tosse
             tosse = False
