@@ -1,5 +1,5 @@
 
-# Probabilidades de cada doença individualmente, sem qualquer evidência
+# Probabilidades de cada  diagnóticos de forma individual(sem receber as entradas)
 p_covid = 1/3
 p_resfriado = 1/3
 p_gripe = 1/3
@@ -10,7 +10,7 @@ class Doencas:
         self.resfriado = resfriado
         self.gripe = gripe
 
-# Função auxiliar que verifica se uma string pode ser traduzida diretamente para número inteiro
+# Função para verificar se uma string pode ser traduzida de forma direta para número inteiro
 def is_int(valor):
     try:
         int(valor)
@@ -18,10 +18,10 @@ def is_int(valor):
     except ValueError:
         return False
 
-# Função auxiliar para perguntar se a pessoa apresentou cada um dos sintomas
+# Função para perguntar ao usuário quais sintomas o mesmo apresenta
 def apresentou(sintoma):
-    print("Você aprensentou " + sintoma + "?")
-    print("[1] Sim     |     [2] Não")
+    print("Você aprensenta " + sintoma + "?")
+    print("{1} Sim     |     {2} Não")
     while 1:
         entrada = input()
         if entrada == '1':
@@ -29,12 +29,12 @@ def apresentou(sintoma):
         elif entrada == '2':
             return False
         else:
-            print("Entre um valor válido: [1] ou [2]")
+            print("Entre um valor válido: {1} ou {2}")
 
-# Função genérica para saber intensidade de um sintoma
+# Função para saber quão intenso é um sintoma
 def intensidade(sintoma):
     print("Qual a intensidade " + sintoma + "? Digite o número correspondente a opção")
-    print("[1] Leve     |     [2] Moderado     |     [3] Intenso")
+    print("{1} Leve     |     {2} Moderado     |     {3} Intenso")
     while 1:
         intensidade_sintoma = input()
         if is_int(intensidade_sintoma):
@@ -47,7 +47,7 @@ def intensidade(sintoma):
 
 def tipo_de_tosse(sintoma):
     print("Qual o tipo da " + sintoma + "? Digite o número correspondente a opção")
-    print("[1] Seca     |     [2] Com secreção")
+    print("{1} Seca     |     {2} Com secreção")
     while 1:
         intensidade_sintoma = input()
         if is_int(intensidade_sintoma):
@@ -71,7 +71,7 @@ def intensidade2(sintoma):
         else:
             print("Tente novamente, apenas números inteiros são aceitos")
 
-# Função do sistema especialista que entregará um resultado a partir das informações coletadas
+# Função que entregará um resultando partindo das informações recebidas como entrada
 def sistema_especialista(febre, grau_febre, tempo_febre,
                          dor_corpo, intensidade_corpo,
                          dor_cabeca, intensidade_cabeca, fadiga, intensidade_fadiga,
@@ -170,7 +170,7 @@ def sistema_especialista(febre, grau_febre, tempo_febre,
             print('<<==============================================================>>\n')
 
 
-# Função de cálculo das probs Bayesianas
+# Função para cálculo das probs Bayesianas
 def bayesiano(eventos_covid, eventos_resfriado, eventos_gripe):
     numerador_covid = p_covid
     numerador_resfriado = p_resfriado
@@ -188,14 +188,14 @@ def bayesiano(eventos_covid, eventos_resfriado, eventos_gripe):
 
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna a probabilidade de cada doença dada a presença ou não de febre
+# Função que atualiza a probabilidade de cada doença dada a presença ou não de febre
 def febre_prob():
     covid = 0.5
     resfriado = 0.2
     gripe = 0.5
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna a probabilidade de cada doença dada a temperatura da febre
+# Função que atualiza a probabilidade de cada doença dada a temperatura da febre
 def febre_temperatura(grau_febre):
     if grau_febre < 38:
         covid = 1
@@ -208,7 +208,7 @@ def febre_temperatura(grau_febre):
 
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna as probabilidades de cada doença dada a duração da febre
+# Função que atualiza as probabilidades de cada doença dada a duração da febre
 def febre_duracao(tempo_febre):
     if 0 < tempo_febre <= 2:
         covid = 0.5
@@ -224,14 +224,14 @@ def febre_duracao(tempo_febre):
         gripe = 0.5
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dado o surgimento de dor corpo
+# Função que atualiza a probabilidade de cada doença dado o surgimento de dor corpo
 def corpo_prob():
     covid = 1 / 3
     resfriado = 2 / 3
     gripe = 1
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dada a intensidade da dor corpo
+# Função que atualiza a probabilidade de cada doença dada a intensidade da dor corpo
 def corpo_dor(intensidade_corpo):
     if intensidade_corpo == 1:
         covid = 0.5
@@ -247,14 +247,14 @@ def corpo_dor(intensidade_corpo):
         gripe = 1
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dado o surgimento de dor de cabeça
+# Função que atualiza a probabilidade de cada doença dado o surgimento de dor de cabeça
 def cabeca_prob():
     covid = 0.5
     resfriado = 0.5
     gripe = 1
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dada a intensidade da dor de cabeça
+# Função que atualiza a probabilidade de cada doença dada a intensidade da dor de cabeça
 def cabeca_dor(intensidade_cabeca):
     if intensidade_cabeca == 1:
         covid = 0.5
@@ -270,7 +270,7 @@ def cabeca_dor(intensidade_cabeca):
         gripe = 1
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dada a intensidade da fadiga
+# Função que atualiza a probabilidade de cada doença dada a intensidade da fadiga
 def fadiga_dor(intensidade_fadiga):
     if intensidade_fadiga == 1:
         covid = 0.5
@@ -283,7 +283,7 @@ def fadiga_dor(intensidade_fadiga):
 
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dada a intensidade da hipertrofia
+# Função que atualiza a probabilidade de cada doença dada a intensidade da tosse
 def tosse_dor(intensidade_tosse):
     if intensidade_tosse == 1:
         covid = 0.5
@@ -306,14 +306,14 @@ def tosse_dif(tipo_tosse):
         gripe = 0.5
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dado o surgimento de falta de ar
+# Função que atualiza a probabilidade de cada doença dado o surgimento de falta de ar
 def falta_ar_chance():
     covid = 1
     resfriado = 0.2
     gripe = 0.2
     return Doencas(covid, resfriado, gripe)
 
-# Função que retorna probabilidade de cada doença dado o surgimento de congestao nasal
+# Função que atualiza a probabilidade de cada doença dado o surgimento de congestao nasal
 def congestao_prob():
     covid = 0.2
     resfriado = 1

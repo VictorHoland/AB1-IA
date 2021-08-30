@@ -1,9 +1,9 @@
 from inferencia import *
 
 def main():
-    print('Seja bem vindo a central da covid!\n')
+    print('Seja bem vindo à central de diagnósticos!\n')
 
-    # Loop principal com requisição das informações necessárias
+    # Loop para recever as principais informações
     print('Deseja realizar uma consulta?\n{1} Sim\n{2} Não')
     entrada = input()
     while 1:
@@ -17,8 +17,8 @@ def main():
             tempo_febre = 0
             if apresentou('febre'):
                 febre = True
-                # Loop para ver a temperatura
-                print('Quantos graus celcius de febre você aprensentou? Arredonde a um valor inteiro entre {36 a 41} \n')
+                # Loop para receber a entrada referente a temperatura
+                print('Quantos graus celcius de febre você aprensenta? Apresente um valor arredondado e inteiro entre 36 e 41 \n')
                 while 1:
                     entrada = input()
                     if is_int(entrada):
@@ -26,12 +26,12 @@ def main():
                             grau_febre = int(entrada)
                             break
                         else:
-                            print("Temperatura fora dos parâmetros aceitáveis, escreva novamente")
+                            print("Temperatura fora do intervalo aceitável, escreva novamente")
                     else:
-                        print("Tente novamente, apenas anúmeros inteiros são ceitos")
+                        print("Tente novamente, apenas números inteiros são ceitos")
 
-                # Loop para ver a duração da febre
-                print("Por quantos dias a febre persistiu? - Digite apenas o número de dias {1 a 7}")
+                # Loop para receber a entrada referente ao tempo em que a febre vem persistindo
+                print("Por quantos dias a febre vem persistindo? - Digite um valor entre 1 e 7")
                 while 1:
                     entrada = input()
                     if is_int(entrada):
@@ -39,7 +39,7 @@ def main():
                             tempo_febre = int(entrada)
                             break
                         else:
-                            print("Números de dias incompatível com o esperado, escreva novamente (1 a 7 dias)")
+                            print("Números de dias incompatível com a entrada esperada, escreva novamente (1 a 7 dias)")
                     else:
                         print("Tente novamente, apenas números inteiros são aceitos")
 
@@ -90,7 +90,7 @@ def main():
                                  tosse, intensidade_tosse,tipo_tosse, falta_ar,
                                  congestao_nasal)
 
-            print('Deseja realizar novo dignóstico?\n{1} Sim     |     {2} Não')
+            print('Deseja realizar um novo atendimento?\n{1} Sim     |     {2} Não')
             while 1:
                 entrada = input()
                 if entrada == '1' or entrada == '2':
@@ -106,7 +106,7 @@ def main():
         else:
             print("Comando não reconhecido")
 
-    print("\nPrograma encerrado")
+    print("\nAtendimento encerrado")
 
 
 if __name__ == '__main__':
